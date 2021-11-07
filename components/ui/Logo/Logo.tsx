@@ -12,7 +12,7 @@ const Logo = ({ className = '', ...props }) => (
                     <path fill="#4ea8de" d="M52.11,34.69a2.92,2.92,0,0,0-5.82,0h0v26.5h0v.17a2.92,2.92,0,1,0,5.83,0c0-.06,0-.11,0-.17h0V34.69Z"/>
                     <path fill="#5390d9" d="M41.64,46.13a2.91,2.91,0,0,0-5.81,0h0v3.62h0a1,1,0,0,0,0,.17,2.92,2.92,0,1,0,5.83,0c0-.06,0-.11,0-.17h0V46.13Z"/>
                     <path fill="#72efdd" d="M83.52,46.13a2.92,2.92,0,0,0-5.82,0h0v3.62h0c0,.06,0,.11,0,.17a2.92,2.92,0,0,0,5.84,0c0-.06,0-.11,0-.17h0V46.13Z"/>
-                    <text fontSize="28.39px" fontFamily="Inter" font-weight="700" transform="translate(110.44 45.86)">He<tspan class="cls-9" x="38.15" y="0">a</tspan><tspan class="cls-10" x="54.06" y="0">v</tspan><tspan class="cls-11" x="70.18" y="0">en Sound</tspan><tspan class="cls-12" x="200.74" y="0">s</tspan><tspan x="216.45" y="0">®</tspan></text>
+                    <text fontSize="28.39px" fontFamily="Inter" font-weight="700" transform="translate(110.44 45.86)">Heaven Sounds®</text>
                     </g>
                 </g>
             </svg>
