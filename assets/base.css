@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;900&display=swap');
+
 :root {
   --primary: #ffffff;
   --primary-2: #f1f3f5;
@@ -37,8 +39,7 @@
   --accent-8: #111111;
   --accent-9: #000;
 
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
-    'Helvetica', sans-serif;
+  --font-sans: 'Inter';
 }
 
 [data-theme='dark'] {

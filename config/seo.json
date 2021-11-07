@@ -1,14 +1,14 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
-  "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "title": "Heaven Sounds | Infinite Pads Live and Worship Sounds",
+  "titleTemplate": "%s - Heaven Sounds",
+  "description": "Infinite Pads diretamente de nosso web app and tenho acesso a timbres poderosos para musicos, tecladistas e sua equipe de louvor.",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "Heaven Sounds | Infinite Pads Live and Worship Sounds",
+    "description": "Infinite Pads diretamente de nosso web app and tenho acesso a timbres poderosos para musicos, tecladistas e sua equipe de louvor..",
     "type": "website",
-    "locale": "en_IE",
-    "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce",
+    "locale": "pt_BR",
+    "url": "https://heavensounds.com.br",
+    "site_name": "Heaven Sounds",
     "images": [
       {
         "url": "/card.png",
