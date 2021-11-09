@@ -33,10 +33,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="col-span-1 lg:col-span-2">
             <Link href="/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-accent-6 mr-2">
-                  <Logo logotipo={false} />
+                <span className="mr-2 filter grayscale">
+                  <Logo logotipo={false} viewBox="0 0 100 68"/>
                 </span>
-                <span>ACME</span>
               </a>
             </Link>
           </div>
@@ -68,10 +67,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
         <div className="pt-6 pb-10 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
           <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} Heaven Sounds. Direitos Reservados.</span>
           </div>
           <div className="flex items-center text-primary text-sm">
-            <span className="text-primary">Created by</span>
+            <span className="text-primary">Created with ❤️ by <a className="text-violet" href="https://jonatascastro.me" target="_blank">Jônatas Castro</a></span>
             <a
               rel="noopener noreferrer"
               href="https://vercel.com"
@@ -79,10 +78,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
               target="_blank"
               className="text-primary"
             >
-              <Vercel
-                className="inline-block h-6 ml-3 text-primary"
-                alt="Vercel.com Logo"
-              />
             </a>
           </div>
         </div>

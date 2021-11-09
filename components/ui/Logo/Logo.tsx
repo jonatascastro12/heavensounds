@@ -1,5 +1,6 @@
-const Logo = ({ className = '', logotipo = true, ...props }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 345.73 64.28" height="50">
+
+const Logo = ({ className = '', logotipo = true, height=50, viewBox="0 0 345.73 64.28", ...props }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} height={height}>
         <defs>
         </defs>
             <g id="Layer_2" data-name="Layer 2">
