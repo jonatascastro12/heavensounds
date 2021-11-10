@@ -5,7 +5,7 @@ const Logo = ({
   viewBox = '0 0 345.73 64.28',
   ...props
 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} height={height}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox={logotipo ? '0 0 345.73 64.28' : '0 0 100.73 64.28'} height={height}>
     <defs></defs>
     <g id="Layer_2" data-name="Layer 2">
       <g id="Layer_1-2" data-name="Layer 1">
