@@ -95,7 +95,7 @@ const Layout: FC<Props> = ({
   pageProps: { categories = [], ...pageProps },
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter()
+  const { locale = 'pt-BR' } = useRouter()
   const navBarlinks = categories.slice(0, 2).map((c) => ({
     label: c.name,
     href: `/search/${c.slug}`,

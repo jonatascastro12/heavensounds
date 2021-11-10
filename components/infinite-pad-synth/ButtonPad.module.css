@@ -1,0 +1,32 @@
+.button{
+  @apply w-32 h-32 text-white font-bold py-2 px-4 rounded text-2xl font-bold;
+  background-color: #444;
+  border: 2px solid #7736c5;
+  outline: #222 2px solid;
+}
+
+.button:hover{
+  background-color: #555;
+
+  border: 2px solid #7854a2;
+  outline: #222 2px solid;
+}
+
+.button:focus{
+  outline: none;
+}
+
+.button:active{
+  @apply border-b-2;
+  background-color: #333;
+  border-color: #222;
+}
+
+.button-active{
+  color: #f1e3e3;
+  text-shadow: #b4eed3;
+}
+
+.label{
+  display: block;
+}

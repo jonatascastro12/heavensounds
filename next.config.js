@@ -15,7 +15,7 @@ module.exports = withCommerceConfig({
   commerce,
   i18n: {
     locales: ['en-US', 'es', 'pt-BR'],
-    defaultLocale: 'en-US',
+    defaultLocale: 'pt-BR',
   },
   rewrites() {
     return [

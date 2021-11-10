@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo } from 'react'
+import React, { FC, PropsWithChildren, useCallback, useMemo } from 'react'
 import { ThemeProvider } from 'next-themes'
 
 export interface State {
@@ -209,8 +209,8 @@ export const useUI = () => {
   return context
 }
 
-export const ManagedUIContext: FC = ({ children }) => (
+export const ManagedUIContext = (props: PropsWithChildren<any>) => (
   <UIProvider>
-    <ThemeProvider>{children}</ThemeProvider>
+    <ThemeProvider forcedTheme={props.component?.theme}>{props.children}</ThemeProvider>
   </UIProvider>
 )

@@ -19,7 +19,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head />
-      <ManagedUIContext>
+      <ManagedUIContext component={Component}>
         <Layout pageProps={pageProps}>
           <Component {...pageProps} />
         </Layout>
