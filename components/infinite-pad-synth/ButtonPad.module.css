@@ -1,5 +1,5 @@
 .button{
-  @apply w-32 h-32 text-white font-bold py-2 px-4 rounded text-2xl font-bold;
+  @apply md:w-32 md:h-32 h-16 w-16 text-white font-bold py-2 px-4 rounded text-2xl font-bold flex align-baseline justify-center;
   background-color: #444;
   border: 2px solid #7736c5;
   outline: #222 2px solid;
@@ -29,4 +29,14 @@
 
 .label{
   display: block;
+  font-size: 12px;
 }
+
+.button .led{
+  width: 30px;
+  height: 3px;
+  background: black;
+  top: 10px;
+  content: "";
+}
+

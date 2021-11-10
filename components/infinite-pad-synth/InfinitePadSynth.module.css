@@ -1,3 +1,4 @@
 .grid{
-  grid-gap: 15px;
+  display: grid;
+  @apply grid-cols-4;
 }
