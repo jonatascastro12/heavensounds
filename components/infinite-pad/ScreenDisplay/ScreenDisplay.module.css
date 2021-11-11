@@ -1,0 +1,17 @@
+.container{
+    @apply w-full grid grid-cols-4;
+    
+}
+.screen{
+    @apply h-32 flex text-6xl w-full col-span-2;
+
+    --main-color: rgb(46, 189, 214);
+    font-family: DotMatrix;
+    color: var(--main-color);
+    text-shadow: var(--main-color) 0 0 5px;
+    align-items: center;
+    justify-content: center;
+    border: 15px solid rgb(29, 29, 32);
+    background: rgb(15, 32, 58);
+    box-shadow:rgba(44, 0, 202, 0.2) 0 0 10px;
+}

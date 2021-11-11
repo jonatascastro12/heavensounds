@@ -43,6 +43,7 @@ const Logo = ({
         />
         {logotipo ? (
           <text
+            fill="var(--text-primary)"
             fontSize="28.39px"
             fontFamily="Inter"
             fontWeight="700"

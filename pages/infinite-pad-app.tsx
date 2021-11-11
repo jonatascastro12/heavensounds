@@ -2,7 +2,7 @@ import { InferGetStaticPropsType } from 'next'
 import { getStaticProps } from './index'
 import { Layout } from '@components/common'
 import { Container } from '@components/ui'
-import InfinitePadSynth from '@components/infinite-pad-synth/InfinitePadSynth'
+import { InfinitePadSynth } from '@components/infinite-pad'
 
 const InfinitePadApp = function({}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (

@@ -1,4 +1,0 @@
-.grid{
-  display: grid;
-  @apply grid-cols-4;
-}

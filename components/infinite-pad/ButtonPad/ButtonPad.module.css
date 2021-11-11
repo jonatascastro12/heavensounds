@@ -1,8 +1,9 @@
 .button{
   @apply md:w-32 md:h-32 h-16 w-16 text-white font-bold py-2 px-4 rounded text-2xl font-bold flex align-baseline justify-center;
   background-color: #444;
-  border: 2px solid #7736c5;
-  outline: #222 2px solid;
+  border: 2px solid #392f446e;
+  outline: rgb(22, 22, 22) 2px solid;
+  box-shadow: #50bbd3 0px 0px 5px;
 }
 
 .button:hover{
@@ -18,13 +19,12 @@
 
 .button:active{
   @apply border-b-2;
-  background-color: #333;
-  border-color: #222;
+  background-color: rgb(78, 78, 78);
+  border: 2px solid #8a6ead;
 }
 
 .button-active{
   color: #f1e3e3;
-  text-shadow: #b4eed3;
 }
 
 .label{
@@ -32,11 +32,15 @@
   font-size: 12px;
 }
 
-.button .led{
+.led{
   width: 30px;
   height: 3px;
-  background: black;
+  background-color: black;
   top: 10px;
   content: "";
 }
 
+.led-active{
+  background-color: rgb(115, 255, 0);
+  box-shadow: rgb(115, 255, 0) 0 0 5px;
+}

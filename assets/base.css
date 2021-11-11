@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;900&display=swap');
 
+@font-face {
+  font-family:"DotMatrix";
+  src: url("./DOTMATRI.TTF") format("truetype");
+}
+
 :root {
   --primary: #ffffff;
   --primary-2: #f1f3f5;
@@ -44,11 +49,11 @@
 }
 
 [data-theme='dark'] {
-  --primary: #000000;
-  --primary-2: #111;
-  --secondary: #ffffff;
+  --primary: #1a1a1a;
+  --primary-2: rgb(31, 31, 31);
+  --secondary: #f5f5f5;
   --secondary-2: #f1f3f5;
-  --hover: rgba(255, 255, 255, 0.075);
+  --hover: rgba(241, 241, 241, 0.075);
   --hover-1: rgba(255, 255, 255, 0.15);
   --hover-2: rgba(255, 255, 255, 0.25);
   --selection: var(--purple);
