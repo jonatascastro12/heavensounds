@@ -1,42 +1,60 @@
 .button{
-  width: 0;
-  height: 0;
-  border-radius: 10px;
-  text-align: center;
-  position: relative;
+  @apply h-16 w-16;
+  cursor: pointer;
 }
 
-.button:focus{
-  outline: none;
+.triangles{
+  stroke: #000;
+  stroke-width: 12px;
+  filter: drop-shadow(0 0 20px rgba(132, 205, 222, 0.55));
 }
 
-.button:active{
-  outline: none;
-  background: #2e2e2e;
+.triangles:hover{
+  fill: #555;
+}
+.triangles:active{
+  fill: #444;
 }
 
-.button.right{
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-left: 45px solid #3a3a3a;
-}
+/*.button{*/
+/*  width: 0;*/
+/*  height: 0;*/
+/*  border-radius: 10px;*/
+/*  text-align: center;*/
+/*  position: relative;*/
+/*}*/
 
-.button.right::after{
-  content: "+";
-  right: 23px;
-  top: -14px;
-  position: absolute;
-}
+/*.button:focus{*/
+/*  outline: none;*/
+/*}*/
 
-.button.left{
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-right: 45px solid #3a3a3a;
-}
+/*.button:active{*/
+/*  outline: none;*/
+/*  background: #2e2e2e;*/
+/*}*/
 
-.button.left::after{
-  content: "-";
-  left: 25px;
-  top: -14px;
-  position: absolute;
-}
+/*.button.right{*/
+/*  border-top: 30px solid transparent;*/
+/*  border-bottom: 30px solid transparent;*/
+/*  border-left: 45px solid #3a3a3a;*/
+/*}*/
+
+/*.button.right::after{*/
+/*  content: "+";*/
+/*  right: 23px;*/
+/*  top: -14px;*/
+/*  position: absolute;*/
+/*}*/
+
+/*.button.left{*/
+/*  border-top: 30px solid transparent;*/
+/*  border-bottom: 30px solid transparent;*/
+/*  border-right: 45px solid #3a3a3a;*/
+/*}*/
+
+/*.button.left::after{*/
+/*  content: "-";*/
+/*  left: 25px;*/
+/*  top: -14px;*/
+/*  position: absolute;*/
+/*}*/
