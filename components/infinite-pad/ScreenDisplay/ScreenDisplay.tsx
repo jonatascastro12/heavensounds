@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react'
+import PatchButton from '../PatchButton'
 
 import s from './ScreenDisplay.module.css'
 

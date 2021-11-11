@@ -1,9 +1,9 @@
 .container{
-    @apply w-full grid grid-cols-4;
+    @apply w-full grid grid-cols-4 items-center;
     
 }
 .screen{
-    @apply h-32 flex text-6xl w-full col-span-2;
+    @apply h-32 flex text-6xl w-full col-span-4;
 
     --main-color: rgb(46, 189, 214);
     font-family: DotMatrix;
