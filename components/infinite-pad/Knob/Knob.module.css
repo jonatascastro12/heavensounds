@@ -57,12 +57,15 @@
   }
 }
 
-.knob::after {
+.knob-outer-led {
   top: 50%;
   left: 50%;
+  position: absolute;
   transform: translate(-50%, -50%);
-  border: 2px solid #FFF;
+  border: 2px solid;
+  border-color: #FFF;
+  border-radius: 50%;
   width: 130%;
   height: 130%;
-  box-shadow: 0px 0px 10px #349beb, inset 0px 0px 10px #349beb;
+  box-shadow: 0px 0px 10px rgba(52, 155, 235, 1), inset 0px 0px 10px rgba(52, 155, 235, 1);
 }

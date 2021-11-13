@@ -1,100 +1,138 @@
 import s from './Knob.module.css'
-import React, { MutableRefObject, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const calculateDegree = (e: React.MouseEvent | MouseEvent | React.TouchEvent | TouchEvent, boundingBox: DOMRect) => {
-  const x1 = boundingBox.left + boundingBox.width / 2
-  const y1 = boundingBox.top + boundingBox.height / 2
-  let x2: number, y2: number
-
+const getXYFromEvent = (e: React.MouseEvent | MouseEvent | React.TouchEvent | TouchEvent, source = 'new') => {
+  let x: number, y: number
+  console.log(e)
   if (['mousestart', 'mousemove'].includes(e.type)) {
     // @ts-ignore
-    x2 = e.clientX
+    x = e.clientX
     // @ts-ignore
-    y2 = e.clientY
+    y = e.clientY
+
   } else if (['touchmove', 'touchstart'].includes(e.type)) {
     // @ts-ignore
-    x2 = e.touches[0].clientX
+    x = e.touches[0].clientX
     // @ts-ignore
-    y2 = e.touches[0].clientY
+    y = e.touches[0].clientY
   } else {
-    return 0
+    return [0, 0]
   }
-
-  const deltaX = x2 - x1
-  const deltaY = y2 - y1
-
-  const rad = Math.atan2(deltaY, deltaX)
-  return rad * (180 / Math.PI)
+  return [x, y]
 }
 
-/**
- * This is not prepared to work with TouchEvents
- * @param dec
- * @param label
- * @constructor
- */
+const angleRange = 270
 
-const Knob = ({ dec = false, label = '', min = 0, max = 127 }) => {
-  const [isMoving, setIsMoving] = useState(false)
-  const [position, setPosition] = useState(0)
+const angleToValue = (angle: number, minVal: number, maxVal: number) => {
+  let pct = angle / angleRange
 
-  const knob: MutableRefObject<any> = useRef(null)
-  const boundingBox: DOMRect = useMemo(() => knob.current ? knob.current.getBoundingClientRect() : null, [knob.current])
+  return Math.floor(minVal + (maxVal - minVal) * pct)
+}
+
+const valueToAngle = (value: number, minVal: number, maxVal: number) => {
+  let pct = value / (maxVal - minVal)
+
+  return Math.floor(pct * angleRange)
+
+}
+
+const calcAngle = (angle: number, delta: number) => {
+  angle += delta
+  if (angle > angleRange) {
+    angle -= angle - angleRange
+  } else if (angle < 0) {
+    angle += Math.abs(angle)
+  }
+  return angle
+}
+
+const Knob = ({
+                dec = false,
+                label = '',
+                initialValue = 0,
+                mouseSpeed = 2,
+                minValue = 0,
+                maxValue = 127,
+                ...props
+              }) => {
+  let [state, setState] = useState<{ angle: number, prevY?: number | null }>({
+    angle: valueToAngle(initialValue, minValue, maxValue)
+  })
+
+  const updatePosition = (e: React.TouchEvent | React.MouseEvent | TouchEvent | MouseEvent) => {
+    let { angle, prevY } = state
+    const [, y] = getXYFromEvent(e)
+
+    if (!prevY) {
+      setState(prev => {
+        let obj = { ...prev, prevY: y }
+        state = obj
+        return obj
+      })
+      return
+    }
+
+    const delta = (prevY - y) * mouseSpeed
+    angle = calcAngle(angle, delta)
+    setState(prev => ({
+      ...prev,
+      angle,
+      prevY: y
+    }))
+    if (props.onChangeValue)
+      props.onChangeValue(angleToValue(angle, minValue, maxValue))
+  }
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (boundingBox) {
-      const result = Math.floor(calculateDegree(e, boundingBox) + 90)
-      setPosition(result)
-    }
+    updatePosition(e)
     window && window.addEventListener('mousemove', handleMouseMove)
     window && window.addEventListener('mouseup', handleMouseUp)
+
+
   }
 
   const handleMouseMove = (e: MouseEvent) => {
-    if (boundingBox) {
-      const result = Math.floor(calculateDegree(e, boundingBox) + 90)
-      setPosition(result)
-    }
+    updatePosition(e)
   }
 
   const handleMouseUp = (e: MouseEvent) => {
+    setState(prev => ({ ...prev, prevY: null }))
     window && window.removeEventListener('mousemove', handleMouseMove)
     window && window.removeEventListener('mousemove', handleMouseUp)
   }
 
   const handleTouchStart = (e: React.TouchEvent) => {
     e.preventDefault()
-    if (boundingBox) {
-      const result = Math.floor(calculateDegree(e, boundingBox) + 90)
-      setPosition(result)
-    }
+    // updatePosition(e)
     window && window.addEventListener('touchmove', handleTouchMove)
     window && window.addEventListener('touchend', handleTouchEnd)
   }
 
   const handleTouchMove = (e: TouchEvent) => {
     e.preventDefault()
-    if (boundingBox) {
-      const result = Math.floor(calculateDegree(e, boundingBox) + 90)
-      setPosition(result)
-    }
+    updatePosition(e)
   }
 
   const handleTouchEnd = (e: TouchEvent) => {
+    setState(prev => ({ ...prev, prevY: null }))
     e.preventDefault()
     window && window.removeEventListener('touchmove', handleTouchMove)
     window && window.removeEventListener('touchend', handleTouchEnd)
   }
 
-
   return (
-    <div className={s.slider} ref={knob}
+    <div className={s.slider}
          onMouseDown={(e) => handleMouseDown(e)}
          onTouchStart={(e) => handleTouchStart(e)}
     >
-      <label className={s.label}>{label} ({position})</label>
+      <label className={s.label}>{label} ({angleToValue(state.angle, minValue, maxValue)})</label>
       <div className={s.knob}
-           style={{ transform: `rotate(${position}deg)` }}>
+           style={{ transform: `rotate(${state.angle}deg)` }}>
+        <div className={s['knob-outer-led']}
+             style={{
+               borderColor: `rgba(255,255,255, ${state.angle / angleRange})`,
+               boxShadow: `0px 0px 10px rgba(52, 155, 235, ${state.angle / angleRange}), inset 0px 0px 10px rgba(52, 155, 235, ${state.angle / angleRange})`
+             }}></div>
       </div>
     </div>
   )
