@@ -1,6 +1,12 @@
-.synth{
-  background-color: linear-gradient(90deg, rgba(85,85,85,1) 0%, rgba(1,1,1,1) 100%);;
-  padding: 41px;
+.synth {
+  background-color: linear-gradient(90deg, rgba(85, 85, 85, 1) 0%, rgba(1, 1, 1, 1) 100%);
   border-bottom: 30px solid #161616;
   border-right: 30px solid #212121;
+  padding: 10px;
+}
+
+@screen lg {
+  .synth {
+    padding: 41px;
+  }
 }

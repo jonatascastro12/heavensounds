@@ -3,6 +3,7 @@ import { ButtonPad } from '@components/infinite-pad'
 import s from './InfinitePadSynth.module.css'
 import ScreenDisplay from '../ScreenDisplay'
 import PatchButton from '../PatchButton'
+import Knob from '@components/infinite-pad/Knob'
 
 
 const keys = [
@@ -12,23 +13,25 @@ const keys = [
 const InfinitePadSynth = () => {
   const [state, setState] = useState({
     currentKey: null
-  });
+  })
 
   return (
     <div className={s.synth}>
-      <div className="grid grid-cols-4 gap-8">
-        <ScreenDisplay className="col-span-2" />
-        <div className="flex items-center justify-around">
-          <PatchButton dec={true}/>
+      <div className='grid grid-cols-4 lg:gap-8 gap-2 items-center'>
+        <ScreenDisplay className='lg:col-span-2 col-span-4' />
+
+        <div className='flex items-center justify-around col-span-4 md:col-span-2 lg:col-span-1'>
+          <PatchButton dec={true} />
           Patch
-          <PatchButton dec={false}/>
+          <PatchButton dec={false} />
         </div>
 
-        <div className="">
-          //knobs
+        <div className='flex items-center justify-around col-span-4 md:col-span-2 lg:col-span-1 pt-16 pb-12'>
+          <Knob label='Cutoff' />
+          <Knob label='Volume' />
         </div>
         {keys.map(k => (
-        <ButtonPad key={k} label={k} active={state?.currentKey == k} setState={setState}/>
+          <ButtonPad key={k} label={k} active={state?.currentKey == k} setState={setState} />
         ))}
       </div>
     </div>

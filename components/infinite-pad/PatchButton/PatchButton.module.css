@@ -1,5 +1,5 @@
 .button{
-  @apply h-16 w-16;
+  @apply md:h-16 md:w-16 w-10 h-10;
   cursor: pointer;
 }
 
@@ -15,46 +15,3 @@
 .triangles:active{
   fill: #444;
 }
-
-/*.button{*/
-/*  width: 0;*/
-/*  height: 0;*/
-/*  border-radius: 10px;*/
-/*  text-align: center;*/
-/*  position: relative;*/
-/*}*/
-
-/*.button:focus{*/
-/*  outline: none;*/
-/*}*/
-
-/*.button:active{*/
-/*  outline: none;*/
-/*  background: #2e2e2e;*/
-/*}*/
-
-/*.button.right{*/
-/*  border-top: 30px solid transparent;*/
-/*  border-bottom: 30px solid transparent;*/
-/*  border-left: 45px solid #3a3a3a;*/
-/*}*/
-
-/*.button.right::after{*/
-/*  content: "+";*/
-/*  right: 23px;*/
-/*  top: -14px;*/
-/*  position: absolute;*/
-/*}*/
-
-/*.button.left{*/
-/*  border-top: 30px solid transparent;*/
-/*  border-bottom: 30px solid transparent;*/
-/*  border-right: 45px solid #3a3a3a;*/
-/*}*/
-
-/*.button.left::after{*/
-/*  content: "-";*/
-/*  left: 25px;*/
-/*  top: -14px;*/
-/*  position: absolute;*/
-/*}*/

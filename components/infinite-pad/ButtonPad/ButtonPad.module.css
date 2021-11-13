@@ -1,6 +1,8 @@
 .button{
   @apply md:w-32 md:h-32 h-16 w-16 text-white font-bold py-2 px-4 rounded text-2xl font-bold flex align-baseline justify-center;
-  background-color: #444;
+  background: linear-gradient(
+    0deg, #525252 0%, #373737 100%
+  );
   border: 2px solid #392f446e;
   outline: rgb(22, 22, 22) 2px solid;
   box-shadow: #50bbd3 0px 0px 5px;
@@ -8,7 +10,6 @@
 
 .button:hover{
   background-color: #555;
-
   border: 2px solid #7854a2;
   outline: #222 2px solid;
 }
@@ -28,8 +29,9 @@
 }
 
 .label{
+  @apply text-sm;
   display: block;
-  font-size: 12px;
+  color: #DDD;
 }
 
 .led{
@@ -41,6 +43,6 @@
 }
 
 .led-active{
-  background-color: rgb(115, 255, 0);
-  box-shadow: rgb(115, 255, 0) 0 0 5px;
+  background: #72f5f0;
+  box-shadow: 0px 0px 10px #349beb;
 }
