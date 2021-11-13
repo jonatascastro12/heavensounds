@@ -1,7 +1,7 @@
 import s from './Knob.module.css'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-const getXYFromEvent = (e: React.MouseEvent | MouseEvent | React.TouchEvent | TouchEvent, source = 'new') => {
+const getXYFromEvent = (e: React.MouseEvent | MouseEvent | React.TouchEvent | TouchEvent) => {
   let x: number, y: number
   console.log(e)
   if (['mousestart', 'mousemove'].includes(e.type)) {
@@ -95,7 +95,7 @@ const Knob = ({
     updatePosition(e)
   }
 
-  const handleMouseUp = (e: MouseEvent) => {
+  const handleMouseUp = () => {
     setState(prev => ({ ...prev, prevY: null }))
     window && window.removeEventListener('mousemove', handleMouseMove)
     window && window.removeEventListener('mousemove', handleMouseUp)
@@ -103,7 +103,7 @@ const Knob = ({
 
   const handleTouchStart = (e: React.TouchEvent) => {
     e.preventDefault()
-    // updatePosition(e)
+    updatePosition(e)
     window && window.addEventListener('touchmove', handleTouchMove)
     window && window.addEventListener('touchend', handleTouchEnd)
   }
