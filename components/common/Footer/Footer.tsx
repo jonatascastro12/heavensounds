@@ -54,13 +54,13 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
             <div className="flex space-x-6 items-center h-10">
-              <a
-                className={s.link}
-                aria-label="Github Repository"
-                href="https://github.com/vercel/commerce"
-              >
-                <Github />
-              </a>
+              {/*<a*/}
+              {/*  className={s.link}*/}
+              {/*  aria-label="Github Repository"*/}
+              {/*  href="https://github.com/vercel/commerce"*/}
+              {/*>*/}
+              {/*  <Github />*/}
+              {/*</a>*/}
               <I18nWidget />
             </div>
           </div>
