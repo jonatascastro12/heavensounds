@@ -1,6 +1,6 @@
 .slider {
   position: relative;
-  @apply p-5;
+  @apply pt-5 pb-5 pr-8 pl-8;
 }
 
 .label {
