@@ -124,7 +124,7 @@ const InfinitePadSynth = () => {
 
   return (
     <div className={s.synth}>
-      <div className='grid grid-cols-4 lg:gap-8 gap-2 items-center'>
+      <div className='grid grid-cols-4 lg:gap-5 gap-2 items-center'>
         <ScreenDisplay className='lg:col-span-2 col-span-4' />
 
         <div className='flex items-center justify-around col-span-4 md:col-span-2 lg:col-span-1'>
@@ -133,7 +133,7 @@ const InfinitePadSynth = () => {
           <PatchButton dec={false} />
         </div>
 
-        <div className='flex items-center justify-around col-span-4 md:col-span-2 lg:col-span-1 pt-16 pb-12'>
+        <div className='flex items-center justify-around col-span-4 md:col-span-2 lg:col-span-1 pt-10 pb-8'>
           <Knob label='Cutoff' initialValue={cutoff} unit={'Hz'} minValue={60} maxValue={1000} onChangeValue={(v: number) => setCutoff(v)} />
           <Knob label='Volume' initialValue={volume} onChangeValue={(v: number) => setVolume(v)} />
         </div>

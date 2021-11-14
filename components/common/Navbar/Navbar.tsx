@@ -24,9 +24,13 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             </a>
           </Link>
           <nav className={s.navMenu}>
-            <Link href="/search">
-              <a className={s.link}>All</a>
+            {/*<Link href="/search">*/}
+            {/*  <a className={s.link}>All</a>*/}
+            {/*</Link>*/}
+            <Link href="/infinite-pad-app">
+              <a className={s.link}>Infinite Pad (Beta)</a>
             </Link>
+
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>
                 <a className={s.link}>{l.label}</a>
@@ -43,9 +47,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           <UserNav />
         </div>
       </div>
-      <div className="flex pb-4 lg:px-6 lg:hidden">
-        <Searchbar id="mobile-search" />
-      </div>
+      {/*<div className="flex pb-4 lg:px-6 lg:hidden">*/}
+      {/*  <Searchbar id="mobile-search" />*/}
+      {/*</div>*/}
     </Container>
   </NavbarRoot>
 )
