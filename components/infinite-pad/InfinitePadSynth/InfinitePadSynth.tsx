@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ButtonPad } from '@components/infinite-pad'
 import s from './InfinitePadSynth.module.css'
 import ScreenDisplay from '../ScreenDisplay'
@@ -18,50 +18,109 @@ const patches = [
 const translateNote = (code: string) => {
   return code.replace('#', 'sharp')
 }
+const crossFadeTime = 5000
+const spriteDuration = 10000
 
-const generateSoundsForPatch = (patchName: string) =>
-  Object.fromEntries(keys.map(k => [k, new Howl({
+const generateSoundsForPatch = (patchName: string) => Object.fromEntries(keys.map(k => [k, new Howl({
     src: [`/sounds/Infinite Pad - ${patchName} - ${translateNote(k)}.mp3`],
-    loop: true,
     sprite: {
-      main: [0, 10000, true],
-      main2: [1000, 9000, true]
+      main: [3000, spriteDuration]
     }
   })]))
 
+const initialSounds = generateSoundsForPatch('Abaddon Choir')
+
+let lowpass:any;
 
 const InfinitePadSynth = () => {
-  const [state, setState] = useState<{ currentKey: string | null, prevKey: string | null, isPlaying: boolean }>({
+  const [state, setState] = useState<{
+    currentKey: string | null,
+    currentSoundId: number | null,
+    loopTimeoutId: number | null,
+    isPlaying: boolean
+  }>({
     currentKey: null,
-    prevKey: null,
+    currentSoundId: null,
+    loopTimeoutId: null,
     isPlaying: false
   })
 
 
-  const [sounds, setSounds] = useState(generateSoundsForPatch('Abaddon Choir'))
+  const [sounds, setSounds] = useState(initialSounds)
+  const prevLoopKey = useRef<string>()
 
-  const [cutoff, setCutoff] = useState(127)
+  const [cutoff, setCutoff] = useState(245)
   const [volume, setVolume] = useState(127)
+
 
   const onButtonPadToggle = ({ key }: { key: string }) => {
     setState(prev => {
-      if (prev.isPlaying && prev.currentKey) {
+      if (prev.currentKey && prev.currentSoundId) {
+        // @ts-ignore
+        clearTimeout(state.loopTimeoutId)
         let playingSound: Howl = sounds[prev.currentKey]
-        playingSound.fade(1, 0, 5000)
+        const soundIdToStop = prev.currentSoundId;
+        soundIdToStop && playingSound.fade(playingSound.volume(soundIdToStop) as number, 0, crossFadeTime, soundIdToStop)
         setTimeout(() => {
-          playingSound.stop()
-        }, 5000)
+          soundIdToStop && playingSound.stop(soundIdToStop)
+        }, crossFadeTime)
       }
-      return { ...prev, prevKey: prev.currentKey, currentKey: key, isPlaying: true }
+      return { ...prev, currentKey: key }
     })
   }
 
-  useEffect(() => {
-    if (state.isPlaying && state.currentKey) {
-      state.currentKey && sounds[state.currentKey].fade(0, 1, 1000)
-      state.currentKey && sounds[state.currentKey].play('main')
+  const playLoop = (newId: number | null = null) => {
+    if (!state.currentKey) return
+    prevLoopKey.current = state.currentKey
+    const sound: Howl = sounds[state.currentKey]
+
+    if (newId) {
+      sound.fade(1, 0, crossFadeTime, newId)
+      setTimeout(() => {
+        sound.stop(newId)
+      }, crossFadeTime)
     }
-  }, [state.currentKey, state.isPlaying])
+    const id = sound.play('main')
+    sound.fade(0, 1, crossFadeTime, id)
+    setState(prev => ({ ...prev, currentSoundId: id }))
+
+    return setTimeout(() => {
+      if (prevLoopKey.current === state.currentKey) {
+        playLoop(id)
+      }
+    }, spriteDuration - crossFadeTime)
+
+  }
+  useEffect(()=>{
+    lowpass = Howler.ctx.createBiquadFilter();
+    lowpass.type = 'lowpass';
+    lowpass.frequency.setValueAtTime(245, Howler.ctx.currentTime);
+    lowpass.gain.setValueAtTime(5, Howler.ctx.currentTime);
+    Howler.masterGain.disconnect();
+    Howler.masterGain.connect(lowpass);
+    lowpass.connect(Howler.ctx.destination);
+  },[])
+
+  useEffect(() => {
+    if (state.currentKey) {
+      const loopTimeoutId = playLoop()
+      // @ts-ignore
+      setState(prev => ({ ...prev, loopTimeoutId }))
+    }
+  }, [state.currentKey])
+
+  useEffect(() => {
+    if (volume) {
+      const howlValue = volume/127;
+      Howler.volume(howlValue)
+    }
+  }, [volume])
+
+  useEffect(() => {
+    if (cutoff) {
+      lowpass.frequency.setValueAtTime(cutoff, Howler.ctx.currentTime);
+    }
+  }, [cutoff])
 
   return (
     <div className={s.synth}>
@@ -75,8 +134,8 @@ const InfinitePadSynth = () => {
         </div>
 
         <div className='flex items-center justify-around col-span-4 md:col-span-2 lg:col-span-1 pt-16 pb-12'>
-          <Knob label='Cutoff' initialValue={cutoff} setValue={(v: number) => setCutoff(v)} />
-          <Knob label='Volume' initialValue={volume} setValue={(v: number) => setVolume(v)} />
+          <Knob label='Cutoff' initialValue={cutoff} unit={'Hz'} minValue={60} maxValue={1000} onChangeValue={(v: number) => setCutoff(v)} />
+          <Knob label='Volume' initialValue={volume} onChangeValue={(v: number) => setVolume(v)} />
         </div>
         {keys.map(k => (
           <ButtonPad key={k} label={k} active={state?.currentKey == k} onToggle={onButtonPadToggle} />

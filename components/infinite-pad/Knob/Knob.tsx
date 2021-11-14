@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 
 const getXYFromEvent = (e: React.MouseEvent | MouseEvent | React.TouchEvent | TouchEvent) => {
   let x: number, y: number
-  console.log(e)
   if (['mousestart', 'mousemove'].includes(e.type)) {
     // @ts-ignore
     x = e.clientX
@@ -26,13 +25,13 @@ const angleRange = 270
 const angleToValue = (angle: number, minVal: number, maxVal: number) => {
   let pct = angle / angleRange
 
-  return Math.floor(minVal + (maxVal - minVal) * pct)
+  return Math.round(minVal + (maxVal - minVal) * pct)
 }
 
 const valueToAngle = (value: number, minVal: number, maxVal: number) => {
-  let pct = value / (maxVal - minVal)
+  let pct = (value - minVal) / (maxVal - minVal)
 
-  return Math.floor(pct * angleRange)
+  return Math.round(pct * angleRange)
 
 }
 
@@ -49,6 +48,7 @@ const calcAngle = (angle: number, delta: number) => {
 const Knob = ({
                 dec = false,
                 label = '',
+                unit = '',
                 initialValue = 0,
                 mouseSpeed = 2,
                 minValue = 0,
@@ -125,7 +125,7 @@ const Knob = ({
          onMouseDown={(e) => handleMouseDown(e)}
          onTouchStart={(e) => handleTouchStart(e)}
     >
-      <label className={s.label}>{label} ({angleToValue(state.angle, minValue, maxValue)})</label>
+      <label className={s.label}>{label} ({angleToValue(state.angle, minValue, maxValue)}{unit})</label>
       <div className={s.knob}
            style={{ transform: `rotate(${state.angle}deg)` }}>
         <div className={s['knob-outer-led']}
