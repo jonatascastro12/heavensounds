@@ -134,7 +134,7 @@ const InfinitePadSynth = () => {
         </div>
 
         <div className='flex items-center justify-around col-span-4 md:col-span-2 lg:col-span-1 pt-10 pb-8'>
-          <Knob label='Cutoff' initialValue={cutoff} unit={'Hz'} minValue={60} maxValue={1000} onChangeValue={(v: number) => setCutoff(v)} />
+          <Knob label='Cutoff' initialValue={cutoff} unit={'Hz'} minValue={60} maxValue={1500} onChangeValue={(v: number) => setCutoff(v)} />
           <Knob label='Volume' initialValue={volume} onChangeValue={(v: number) => setVolume(v)} />
         </div>
         {keys.map(k => (

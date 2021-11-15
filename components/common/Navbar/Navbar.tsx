@@ -28,7 +28,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             {/*  <a className={s.link}>All</a>*/}
             {/*</Link>*/}
             <Link href="/infinite-pad-app">
-              <a className={s.link}>Infinite Pad (Beta)</a>
+              <a className={s.link}>Infinite Pads (Beta)</a>
             </Link>
 
             {links?.map((l) => (

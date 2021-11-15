@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import Link from '@components/ui/Link'
 import { useRouter } from 'next/router'
+import { EmailForm } from '@components/email-marketing'
 
 export async function getStaticProps({
                                        preview,
@@ -56,8 +57,9 @@ export default function Home({
   const { mainCopy, cta } = locale && content[locale]
 
   return (
-    <section className='w-full'>
-      <div className='
+    <>
+      <section className='w-full'>
+        <div className='
           relative
           items-center
           w-full
@@ -69,10 +71,10 @@ export default function Home({
           max-w-7xl
           lg:py-24
         '>
-        <div className='flex w-full mx-auto text-left'>
-          <div className='relative inline-flex items-center mx-auto align-middle'>
-            <div className='text-center'>
-              <h1 className='
+          <div className='flex w-full mx-auto text-left'>
+            <div className='relative inline-flex items-center mx-auto align-middle'>
+              <div className='text-center'>
+                <h1 className='
                   max-w-5xl
                   text-2xl
                   font-bold
@@ -82,7 +84,7 @@ export default function Home({
                   md:text-5xl
                   lg:text-6xl lg:max-w-7xl
                 '> Infinite Pads <br className='hidden lg:block' /> <span className='text-blue'>Online</span></h1>
-              <p className='
+                <p className='
                   max-w-xl
                   mx-auto
                   mt-8
@@ -90,10 +92,10 @@ export default function Home({
                   leading-relaxed
                   text-gray-300
                 '> {mainCopy} </p>
-              <div className='flex justify-center w-full max-w-2xl gap-2 mx-auto mt-6'>
-                <div className='mt-3 rounded-lg sm:mt-0'>
-                  <Link href={"/infinite-pad-app"}>
-                    <button className='
+                <div className='flex justify-center w-full max-w-2xl gap-2 mx-auto mt-6'>
+                  <div className='mt-3 rounded-lg sm:mt-0'>
+                    <Link href={'/infinite-pad-app'}>
+                      <button className='
                       items-center
                       block
                       px-5
@@ -114,15 +116,15 @@ export default function Home({
                       focus:ring-offset-2
                       focus:ring-blue-500
                     '> {cta}
-                    </button>
-                  </Link>
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <section id='intro'>
-          <div className='
+          <section id='intro'>
+            <div className='
               flex flex-col
               items-center
               justify-center
@@ -132,12 +134,18 @@ export default function Home({
               lg:px-10
               max-w-7xl
             '>
-            <img className='object-cover object-center w-full rounded-xl' alt='hero'
-                 src='/featured-infinite-pad-3.jpg' />
-          </div>
-        </section>
-      </div>
-    </section>
+              <img className='object-cover object-center w-full rounded-xl' alt='hero'
+                   src='/featured-infinite-pad-3.jpg' />
+            </div>
+          </section>
+        </div>
+      </section>
+      <section className='w-full bg-accent-7'>
+        <div className=' relative items-center px-5 py-12 mx-auto md:px-12 lg:px-16 max-w-7xl lg:py-24 '>
+          {locale && <EmailForm locale={locale} />}
+        </div>
+      </section>
+    </>
   )
 }
 
