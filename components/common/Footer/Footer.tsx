@@ -8,6 +8,7 @@ import { Github } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
+import Telegram from '@components/icons/Telegram'
 
 interface Props {
   className?: string
@@ -54,13 +55,13 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
             <div className="flex space-x-6 items-center h-10">
-              {/*<a*/}
-              {/*  className={s.link}*/}
-              {/*  aria-label="Github Repository"*/}
-              {/*  href="https://github.com/vercel/commerce"*/}
-              {/*>*/}
-              {/*  <Github />*/}
-              {/*</a>*/}
+              <a
+                className={s.link}
+                aria-label="Telegram Channel"
+                href="https://t.me/joinchat/Si8IAoqy3-E2NzBh"
+              >
+                <Telegram />
+              </a>
               <I18nWidget />
             </div>
           </div>

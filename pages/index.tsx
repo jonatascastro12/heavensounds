@@ -6,6 +6,7 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import Link from '@components/ui/Link'
 import { useRouter } from 'next/router'
 import { EmailForm } from '@components/email-marketing'
+import Telegram from '@components/icons/Telegram'
 
 export async function getStaticProps({
                                        preview,
@@ -41,11 +42,13 @@ export async function getStaticProps({
 const content: any = {
   'en-US': {
     mainCopy: 'You don\'t need to install any app. Just open from your browser and start the worship atmosphere right now!',
-    cta: 'Start App (Beta)'
+    cta: 'Start App (Beta)',
+    ctaTelegram: 'Join Our Channel'
   },
   'pt-BR': {
     mainCopy: 'Não precisa instalar nenhum app. Abra direto no navegador e comece criar um ambiente worship agora mesmo!',
-    cta: 'Iniciar App (Beta)'
+    cta: 'Iniciar App (Beta)',
+    ctaTelegram: 'Entrar no Telegram'
   }
 }
 
@@ -54,7 +57,7 @@ export default function Home({
                              }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { theme, setTheme } = useTheme()
   const { locale } = useRouter()
-  const { mainCopy, cta } = locale && content[locale]
+  const { mainCopy, cta, ctaTelegram } = locale && content[locale]
 
   return (
     <>
@@ -93,10 +96,10 @@ export default function Home({
                   text-gray-300
                 '> {mainCopy} </p>
                 <div className='flex justify-center w-full max-w-2xl gap-2 mx-auto mt-6'>
-                  <div className='mt-3 rounded-lg sm:mt-0'>
+                  <div className='mt-3 rounded-lg sm:mt-0 grid grid-cols-2'>
                     <Link href={'/infinite-pad-app'}>
-                      <button className='
-                      items-center
+                      <button className='items-center
+                      cursor-pointer
                       block
                       px-5
                       py-4
@@ -116,6 +119,30 @@ export default function Home({
                       focus:ring-offset-2
                       focus:ring-blue-500
                     '> {cta}
+                      </button>
+                    </Link>
+                    <Link href="https://t.me/joinchat/Si8IAoqy3-E2NzBh">
+                      <button className='border-violet border-2
+                      items-center flex
+                      block
+                      px-5
+                      py-4
+                      cursor-pointer
+                      text-violet
+                      font-medium
+                      text-center text-white
+                      transition
+                      duration-500
+                      ease-in-out
+                      transform
+                      lg:px-10
+                      rounded-xl
+                      hover:bg-blue-500
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-offset-2
+                      focus:ring-blue-500
+                    '><Telegram /> &nbsp;{ctaTelegram}
                       </button>
                     </Link>
                   </div>
