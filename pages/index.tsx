@@ -1,4 +1,5 @@
 import commerce from '@lib/api/commerce'
+import Image from 'next/image'
 import { Layout } from '@components/common'
 import { useTheme } from 'next-themes'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
@@ -39,11 +40,11 @@ export async function getStaticProps({
 const content: any = {
   'en-US': {
     mainCopy: 'You don\'t need to install any app. Just open from your browser and start the worship atmosphere right now!',
-    cta: "Start App",
+    cta: 'Start App'
   },
   'pt-BR': {
     mainCopy: 'Não precisa instalar nenhum app. Abra direto no navegador e comece criar um ambiente worship agora mesmo!',
-    cta: "Iniciar App",
+    cta: 'Iniciar App'
 
   }
 }
@@ -53,35 +54,89 @@ export default function Home({
                              }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { theme, setTheme } = useTheme()
   const { locale } = useRouter()
-  const { mainCopy, cta } = locale && content[locale];
+  const { mainCopy, cta } = locale && content[locale]
 
   return (
-    <>
-      <main className='mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28'>
-        <div className='sm:text-center lg:text-left'>
-          <h1 className='text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl'>
-            <span className='block text-primary xl:inline'>Infinite Pads</span>
-            <span className='block text-indigo-600'>Online</span>
-          </h1>
-          <p
-            className='mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0'>
-            {mainCopy}
-          </p>
-          <div className='mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start'>
-            <div className='rounded-md shadow'>
-              <Link href={{
-                pathname: '/infinite-pad-app'
-              }}>
-                <a
-                  className='w-full flex items-center justify-center px-8 py-3 border border-transparent font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10'>
-                  {cta}
-                </a>
-              </Link>
+    <section className='w-full'>
+      <div className='
+          relative
+          items-center
+          w-full
+          px-5
+          py-12
+          mx-auto
+          md:px-12
+          lg:px-16
+          max-w-7xl
+          lg:py-24
+        '>
+        <div className='flex w-full mx-auto text-left'>
+          <div className='relative inline-flex items-center mx-auto align-middle'>
+            <div className='text-center'>
+              <h1 className='
+                  max-w-5xl
+                  text-2xl
+                  font-bold
+                  leading-none
+                  tracking-tighter
+                  text-neutral-600
+                  md:text-5xl
+                  lg:text-6xl lg:max-w-7xl
+                '> Infinite Pads <br className='hidden lg:block' /> <span className="text-blue">Online</span></h1>
+              <p className='
+                  max-w-xl
+                  mx-auto
+                  mt-8
+                  text-base
+                  leading-relaxed
+                  text-gray-300
+                '> {mainCopy} </p>
+              <div className='flex justify-center w-full max-w-2xl gap-2 mx-auto mt-6'>
+                <div className='mt-3 rounded-lg sm:mt-0'>
+                  <button className='
+                      items-center
+                      block
+                      px-5
+                      py-4
+                      text-white
+                      font-medium
+                      text-center text-white
+                      transition
+                      duration-500
+                      ease-in-out
+                      transform
+                      bg-violet
+                      lg:px-10
+                      rounded-xl
+                      hover:bg-blue-500
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-offset-2
+                      focus:ring-blue-500
+                    '> {cta}
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </main>
-    </>
+        <section id='intro'>
+          <div className='
+              flex flex-col
+              items-center
+              justify-center
+              pt-24
+              mx-auto
+              rounded-lg
+              lg:px-10
+              max-w-7xl
+            '>
+            <img className='object-cover object-center w-full rounded-xl' alt='hero'
+                 src="/featured-infinite-pad-3.jpg" />
+          </div>
+        </section>
+      </div>
+    </section>
   )
 }
 

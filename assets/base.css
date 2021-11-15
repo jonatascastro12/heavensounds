@@ -16,6 +16,15 @@
   --text-primary: #000000;
   --text-secondary: white;
 
+  --text-pink: #ff0080;
+  --text-pink-light: #ff379c;
+
+  --text-magenta: #eb367f;
+
+  --text-violet: #7928ca;
+  --text-violet-light: #9259cd;
+  --text-violet-dark: #4c2889;
+
   --hover: rgba(0, 0, 0, 0.075);
   --hover-1: rgba(0, 0, 0, 0.15);
   --hover-2: rgba(0, 0, 0, 0.25);
@@ -61,6 +70,15 @@
   --text-base: white;
   --text-primary: white;
   --text-secondary: black;
+
+  --text-pink: #ff0080;
+  --text-pink-light: #ff379c;
+
+  --text-magenta: #eb367f;
+
+  --text-violet: #7928ca;
+  --text-violet-light: #9259cd;
+  --text-violet-dark: #4c2889;
 
   --accent-9: #fff;
   --accent-8: #fafafa;
