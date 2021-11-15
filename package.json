@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@react-spring/web": "^9.2.1",
+    "@types/gtag.js": "^0.0.8",
     "@types/howler": "^2.2.4",
     "@vercel/fetch": "^6.1.0",
     "autoprefixer": "^10.2.6",

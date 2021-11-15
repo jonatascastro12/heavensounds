@@ -18,13 +18,13 @@ import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
 
 const Loading = () => (
-  <div className="w-80 h-80 flex items-center text-center justify-center p-3">
+  <div className='w-80 h-80 flex items-center text-center justify-center p-3'>
     <LoadingDots />
   </div>
 )
 
 const dynamicProps = {
-  loading: Loading,
+  loading: Loading
 }
 
 const SignUpView = dynamic(
@@ -39,7 +39,7 @@ const ForgotPassword = dynamic(
 
 const FeatureBar = dynamic(
   () => import('@components/common/FeatureBar'),
-  dynamicProps
+  { loading: Loading, ssr: false }
 )
 
 interface Props {
@@ -50,9 +50,9 @@ interface Props {
 }
 
 const ModalView: FC<{ modalView: string; closeModal(): any }> = ({
-  modalView,
-  closeModal,
-}) => {
+                                                                   modalView,
+                                                                   closeModal
+                                                                 }) => {
   return (
     <Modal onClose={closeModal}>
       {modalView === 'LOGIN_VIEW' && <LoginView />}
@@ -70,9 +70,9 @@ const ModalUI: FC = () => {
 }
 
 const SidebarView: FC<{ sidebarView: string; closeSidebar(): any }> = ({
-  sidebarView,
-  closeSidebar,
-}) => {
+                                                                         sidebarView,
+                                                                         closeSidebar
+                                                                       }) => {
   return (
     <Sidebar onClose={closeSidebar}>
       {sidebarView === 'CART_VIEW' && <CartSidebarView />}
@@ -91,29 +91,29 @@ const SidebarUI: FC = () => {
 }
 
 const Layout: FC<Props> = ({
-  children,
-  pageProps: { categories = [], ...pageProps },
-}) => {
+                             children,
+                             pageProps: { categories = [], ...pageProps }
+                           }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   const { locale = 'pt-BR' } = useRouter()
   const navBarlinks = categories.slice(0, 2).map((c) => ({
     label: c.name,
-    href: `/search/${c.slug}`,
+    href: `/search/${c.slug}`
   }))
 
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
-        <main className="fit">{children}</main>
+        <main className='fit'>{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
         <SidebarUI />
         <FeatureBar
-          title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
+          title='This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy.'
           hide={acceptedCookies}
           action={
-            <Button className="mx-5" onClick={() => onAcceptCookies()}>
+            <Button className='mx-5' onClick={() => onAcceptCookies()}>
               Accept cookies
             </Button>
           }
