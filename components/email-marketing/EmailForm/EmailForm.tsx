@@ -34,9 +34,9 @@ const EmailForm = ({ locale }: { locale: string }) => {
             <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden='true'>
               <input type='text'
                      name='b_bc099dc10ead3caf27aa31ae6_6cd7657a3e'
-                     tabIndex={-1} value='' />
+                     tabIndex={-1} defaultValue='' />
             </div>
-            <button type='submit' value='Subscribe' name='subscribe' id='mc-embedded-subscribe'
+            <button type='submit' defaultValue='Subscribe' name='subscribe' id='mc-embedded-subscribe'
                     className='px-8 rounded-r-lg bg-violet text-white font-bold p-4 uppercase border-violet border-t border-b border-r'>{cta}
             </button>
           </div>
