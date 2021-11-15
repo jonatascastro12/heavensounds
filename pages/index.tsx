@@ -40,12 +40,11 @@ export async function getStaticProps({
 const content: any = {
   'en-US': {
     mainCopy: 'You don\'t need to install any app. Just open from your browser and start the worship atmosphere right now!',
-    cta: 'Start App'
+    cta: 'Start App (Beta)'
   },
   'pt-BR': {
     mainCopy: 'Não precisa instalar nenhum app. Abra direto no navegador e comece criar um ambiente worship agora mesmo!',
-    cta: 'Iniciar App'
-
+    cta: 'Iniciar App (Beta)'
   }
 }
 
@@ -82,7 +81,7 @@ export default function Home({
                   text-neutral-600
                   md:text-5xl
                   lg:text-6xl lg:max-w-7xl
-                '> Infinite Pads <br className='hidden lg:block' /> <span className="text-blue">Online</span></h1>
+                '> Infinite Pads <br className='hidden lg:block' /> <span className='text-blue'>Online</span></h1>
               <p className='
                   max-w-xl
                   mx-auto
@@ -93,7 +92,8 @@ export default function Home({
                 '> {mainCopy} </p>
               <div className='flex justify-center w-full max-w-2xl gap-2 mx-auto mt-6'>
                 <div className='mt-3 rounded-lg sm:mt-0'>
-                  <button className='
+                  <Link href={"/infinite-pad-app"}>
+                    <button className='
                       items-center
                       block
                       px-5
@@ -114,7 +114,8 @@ export default function Home({
                       focus:ring-offset-2
                       focus:ring-blue-500
                     '> {cta}
-                  </button>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -132,7 +133,7 @@ export default function Home({
               max-w-7xl
             '>
             <img className='object-cover object-center w-full rounded-xl' alt='hero'
-                 src="/featured-infinite-pad-3.jpg" />
+                 src='/featured-infinite-pad-3.jpg' />
           </div>
         </section>
       </div>
