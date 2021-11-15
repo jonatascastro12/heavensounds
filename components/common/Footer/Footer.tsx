@@ -70,7 +70,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <span>&copy; {new Date().getFullYear()} Heaven Sounds. Direitos Reservados.</span>
           </div>
           <div className="flex items-center text-primary text-sm">
-            <span className="text-primary">Created with ❤️ by <a className="text-violet" href="https://jonatascastro.me" target="_blank" rel="noreferrer">Jônatas Castro</a></span>
+            <span className="text-primary">Created with ❤️ &nbsp;by <a className="text-violet" href="https://jonatascastro.me" target="_blank" rel="noreferrer">Jônatas Castro</a></span>
           </div>
         </div>
       </Container>
