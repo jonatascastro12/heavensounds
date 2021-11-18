@@ -49,7 +49,7 @@ const Logo = ({
             fontWeight="700"
             transform="translate(110.44 45.86)"
           >
-            Heaven Sounds®
+            Heaven Sounds
           </text>
         ) : (
           ''
