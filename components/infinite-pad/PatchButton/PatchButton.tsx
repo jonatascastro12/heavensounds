@@ -1,8 +1,9 @@
 import s from './PatchButton.module.css'
 
-const PatchButton = ({ dec = false }) => {
+const PatchButton = ({ dec = false, ...props }) => {
   return (
     <svg className={s.button}
+         onClick={(e) => props.onClick(e)}
          version='1.1' id='Layer_1' width='64' height='64'
          viewBox='0 0 460.5 531.74' overflow='visible'>
       {!dec ?
