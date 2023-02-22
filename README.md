@@ -1,6 +1,6 @@
 # Heaven Sounds
 
-This weekend project is a quick show off of Next.js + React + Web Audio API. Started this repository from Next.js Commerce.
+This weekend project is a quick show off of Next.js + React + Web Audio API ([howlerjs.com](https://howlerjs.com)). Started this repository from [Next.js Commerce](https://github.com/vercel/commerce).
 
 This was a lab for a web virtual synth. Started with "Infinite Pads".
 
